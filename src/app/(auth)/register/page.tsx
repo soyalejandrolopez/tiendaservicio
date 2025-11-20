@@ -4,6 +4,8 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
 
+export const dynamic = 'force-dynamic';
+
 interface RegisterPageProps {
     searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
