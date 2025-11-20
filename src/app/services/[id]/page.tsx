@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Star } from "lucide-react";
 import WompiButton from "@/components/wompi-button";
+import { formatPrice } from "@/lib/format";
 
 export const revalidate = 300;
 
@@ -81,7 +82,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
               <CardContent className="pt-6 pb-6 space-y-4">
                 <div className="text-center">
                   <p className="text-xs text-orange-100 mb-1 uppercase tracking-wide">Precio</p>
-                  <span className="text-5xl md:text-6xl font-bold text-white">${service.price}</span>
+                  <span className="text-5xl md:text-6xl font-bold text-white">${formatPrice(service.price)}</span>
                 </div>
                 <WompiButton price={Number(service.price)} title={service.title} />
               </CardContent>

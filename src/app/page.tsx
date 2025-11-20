@@ -4,6 +4,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import { formatPrice } from "@/lib/format";
 
 // Remove force-dynamic to allow static generation with revalidation
 export const revalidate = 300; // Revalidate every 5 minutes instead of every request
@@ -84,7 +85,7 @@ export default async function LandingPage() {
                       quality={75}
                     />
                     <div className="absolute top-3 right-3 bg-gradient-to-r from-orange-500 to-red-500 text-white px-3 py-1.5 rounded-full text-base font-bold shadow-lg">
-                      ${service.price}
+                      ${formatPrice(service.price)}
                     </div>
                   </div>
                   <CardHeader className="pb-2 px-4 pt-3">

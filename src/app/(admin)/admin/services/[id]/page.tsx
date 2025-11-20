@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Edit, ArrowLeft } from "lucide-react";
+import { formatPrice } from "@/lib/format";
 
 export const dynamic = 'force-dynamic';
 
@@ -56,7 +57,7 @@ export default async function ViewServicePage({
           </div>
           <p className="mt-4 text-gray-600">{service.description}</p>
           <div className="mt-6">
-            <p className="text-2xl font-bold text-blue-600">${service.price}</p>
+            <p className="text-2xl font-bold text-blue-600">${formatPrice(service.price)}</p>
           </div>
         </div>
       </div>

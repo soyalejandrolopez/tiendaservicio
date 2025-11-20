@@ -4,6 +4,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
+import { formatPrice } from "@/lib/format";
 
 export const revalidate = 300;
 
@@ -40,7 +41,7 @@ export default async function ServicesPage() {
                       className="aspect-video object-cover w-full group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute top-3 right-3 bg-gradient-to-r from-orange-500 to-red-500 text-white px-3 py-1.5 md:px-4 md:py-2 rounded-full text-base md:text-lg font-bold shadow-lg">
-                      ${service.price}
+                      ${formatPrice(service.price)}
                     </div>
                   </div>
                   <CardHeader className="pb-2 md:pb-3 px-4 pt-4">

@@ -2,6 +2,7 @@ import { createClient } from "@/utils/supabase/server";
 import { notFound } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { formatPrice } from "@/lib/format";
 
 export const dynamic = 'force-dynamic';
 
@@ -112,7 +113,7 @@ export default async function OrderDetailPage({
             </div>
             <div>
               <h3 className="font-medium text-lg mb-2">Resumen del Pedido</h3>
-              <p><span className="font-medium">Total:</span> ${order.total_amount}</p>
+              <p><span className="font-medium">Total:</span> ${formatPrice(order.total_amount)}</p>
               <p><span className="font-medium">Método de Pago:</span> {order.payment_method || 'N/A'}</p>
             </div>
           </div>
@@ -142,9 +143,9 @@ export default async function OrderDetailPage({
                     {orderItems.map((item) => (
                       <tr key={item.id} className="border-b">
                         <td className="p-4 align-middle font-medium">{item.services?.title || 'Servicio eliminado'}</td>
-                        <td className="p-4 align-middle">${item.price}</td>
+                        <td className="p-4 align-middle">${formatPrice(item.price)}</td>
                         <td className="p-4 align-middle">{item.quantity}</td>
-                        <td className="p-4 align-middle">${item.price * item.quantity}</td>
+                        <td className="p-4 align-middle">${formatPrice(item.price * item.quantity)}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -155,7 +156,7 @@ export default async function OrderDetailPage({
 
           <div className="mt-6 flex justify-end">
             <div className="text-right">
-              <p className="text-lg"><span className="font-medium">Total del Pedido:</span> <span className="text-xl font-bold">${order.total_amount}</span></p>
+              <p className="text-lg"><span className="font-medium">Total del Pedido:</span> <span className="text-xl font-bold">${formatPrice(order.total_amount)}</span></p>
             </div>
           </div>
         </CardContent>

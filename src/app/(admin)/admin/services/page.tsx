@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { revalidatePath } from "next/cache";
 import Link from "next/link";
 import { PlusCircle, Trash2, Edit } from "lucide-react";
+import { formatPrice } from "@/lib/format";
 
 export const dynamic = 'force-dynamic';
 
@@ -47,7 +48,7 @@ export default async function ManageServicesPage() {
                                 <td className="p-4 align-middle">{index + 1}</td>
                                 <td className="p-4 align-middle font-medium">{service.title}</td>
                                 <td className="p-4 align-middle text-sm text-muted-foreground max-w-xs truncate">{service.description}</td>
-                                <td className="p-4 align-middle">${service.price}</td>
+                                <td className="p-4 align-middle">${formatPrice(service.price)}</td>
                                 <td className="p-4 align-middle flex gap-2">
                                     <Link href={`/admin/services/${encodeURIComponent(service.id)}/edit`}>
                                         <Button variant="outline" size="sm" title="Editar servicio">
