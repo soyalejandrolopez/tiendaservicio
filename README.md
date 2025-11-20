@@ -64,3 +64,7 @@ NEXT_PUBLIC_BASE_URL=tu_url_de_produccion
 ## 📄 Licencia
 
 MIT
+
+---
+
+**Desarrollado con ❤️ por Alejandro López**
