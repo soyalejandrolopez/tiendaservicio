@@ -4,6 +4,8 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
+export const dynamic = 'force-dynamic';
+
 export default async function LandingPage() {
   const supabase = await createClient();
   const { data: services } = await supabase.from("services").select("*").eq("active", true);
