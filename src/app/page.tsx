@@ -21,8 +21,11 @@ export default async function LandingPage() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-black/50 backdrop-blur-sm text-white">
-        <div className="container px-4 md:px-6">
+      <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 relative text-white">
+        {/* Entertainment overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-purple-900/30 via-transparent to-blue-900/30"></div>
+
+        <div className="container px-4 md:px-6 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
             <div className="space-y-4">
               <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
@@ -54,8 +57,10 @@ export default async function LandingPage() {
         </div>
       </section>
 
-      <section id="services" className="w-full py-12 md:py-24 lg:py-32 relative bg-slate-950">
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-900 to-slate-950 opacity-90"></div>
+      <section id="services" className="w-full py-12 md:py-24 lg:py-32 relative">
+        {/* Entertainment-themed section background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-900/10 to-transparent"></div>
+
         <div className="container px-4 md:px-6 relative z-10">
           <div className="text-center mb-16 space-y-4">
             <h2 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl text-white">
