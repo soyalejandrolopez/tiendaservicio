@@ -5,12 +5,10 @@ import MobileMenu from "./mobile-menu"
 
 export default async function Navbar() {
     const supabase = await createClient()
-    const {
-        data: { user },
-    } = await supabase.auth.getUser()
+    const { data: { user } } = await supabase.auth.getUser()
 
     return (
-        <nav className="hidden md:block border-b bg-black/30 backdrop-blur-md supports-[backdrop-filter]:bg-background/30 sticky top-0 z-50">
+        <nav className="hidden md:block border-b bg-black/50 sticky top-0 z-50">
             <div className="container flex h-16 items-center justify-between">
                 <div className="hidden md:flex items-center justify-center gap-8 flex-1">
                     <Link href="/" className="flex items-center space-x-2">

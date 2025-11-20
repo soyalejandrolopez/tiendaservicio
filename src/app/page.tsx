@@ -3,12 +3,18 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 
 export const dynamic = 'force-dynamic';
+export const revalidate = 60; // Revalidate every 60 seconds
 
 export default async function LandingPage() {
   const supabase = await createClient();
-  const { data: services } = await supabase.from("services").select("*").eq("active", true);
+  const { data: services } = await supabase
+    .from("services")
+    .select("id, title, description, price, image_url")
+    .eq("active", true)
+    .limit(6);
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -31,20 +37,22 @@ export default async function LandingPage() {
               </div>
             </div>
             <div className="flex justify-center">
-              <img
+              <Image
                 src="/digital-services.jpg"
                 alt="Servicios Digitales Premium"
                 className="rounded-xl shadow-2xl w-full max-w-lg h-auto"
                 width={600}
                 height={400}
+                priority
+                quality={85}
               />
             </div>
           </div>
         </div>
       </section>
 
-      <section id="services" className="w-full py-12 md:py-24 lg:py-32 relative" style={{backgroundImage: "url('/background-digital.jpg')", backgroundSize: "cover", backgroundPosition: "center"}}>
-        <div className="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+      <section id="services" className="w-full py-12 md:py-24 lg:py-32 relative bg-slate-950">
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-900 to-slate-950 opacity-90"></div>
         <div className="container px-4 md:px-6 relative z-10">
           <div className="text-center mb-16 space-y-4">
             <h2 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl text-white">
@@ -58,11 +66,14 @@ export default async function LandingPage() {
             {services?.map((service) => (
               <Link key={service.id} href={`/services/${service.id}`}>
                 <Card className="group overflow-hidden bg-white border border-slate-200 hover:border-orange-300 transition-all duration-300 hover:shadow-2xl hover:shadow-orange-500/20 h-full cursor-pointer">
-                  <div className="relative overflow-hidden">
-                    <img
+                  <div className="relative overflow-hidden aspect-video">
+                    <Image
                       src={service.image_url || "/placeholder.svg"}
                       alt={service.title}
-                      className="aspect-video object-cover w-full group-hover:scale-105 transition-transform duration-500"
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      quality={75}
                     />
                     <div className="absolute top-4 right-4 bg-gradient-to-r from-orange-500 to-red-500 text-white px-4 py-2 rounded-full text-lg font-bold shadow-lg">
                       ${service.price}

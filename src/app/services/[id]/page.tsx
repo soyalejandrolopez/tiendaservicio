@@ -3,10 +3,12 @@ import { notFound } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Star } from "lucide-react";
 import WompiButton from "@/components/wompi-button";
 
 export const dynamic = 'force-dynamic';
+export const revalidate = 60;
 
 interface ServicePageProps {
   params: Promise<{
@@ -19,7 +21,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
   const supabase = await createClient();
   const { data: service } = await supabase
     .from("services")
-    .select("*")
+    .select("id, title, description, price, image_url")
     .eq("id", id)
     .single();
 
@@ -39,11 +41,15 @@ export default async function ServicePage({ params }: ServicePageProps) {
 
         <div className="grid lg:grid-cols-2 gap-6 lg:gap-8">
           <div className="space-y-4">
-            <div className="relative overflow-hidden rounded-2xl shadow-xl">
-              <img
+            <div className="relative overflow-hidden rounded-2xl shadow-xl w-full aspect-square">
+              <Image
                 src={service.image_url || "/placeholder.svg"}
                 alt={service.title}
-                className="w-full aspect-square object-cover"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                quality={75}
+                priority
+                className="object-cover"
               />
             </div>
 

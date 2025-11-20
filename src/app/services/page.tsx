@@ -2,15 +2,17 @@ import { createClient } from "@/utils/supabase/server";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
 export const dynamic = 'force-dynamic';
+export const revalidate = 60;
 
 export default async function ServicesPage() {
   const supabase = await createClient();
   const { data: services } = await supabase
     .from("services")
-    .select("*")
+    .select("id, title, description, price, image_url")
     .eq("active", true);
 
   return (
@@ -29,9 +31,13 @@ export default async function ServicesPage() {
               <Link key={service.id} href={`/services/${service.id}`}>
                 <Card className="group overflow-hidden bg-white border border-slate-200 hover:border-orange-300 transition-all duration-300 hover:shadow-2xl hover:shadow-orange-500/20 flex flex-col h-full cursor-pointer">
                   <div className="relative overflow-hidden">
-                    <img
+                    <Image
                       src={service.image_url || "/placeholder.svg"}
                       alt={service.title}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      quality={75}
+                      priority
                       className="aspect-video object-cover w-full group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute top-3 right-3 bg-gradient-to-r from-orange-500 to-red-500 text-white px-3 py-1.5 md:px-4 md:py-2 rounded-full text-base md:text-lg font-bold shadow-lg">
