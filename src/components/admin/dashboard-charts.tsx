@@ -152,7 +152,7 @@ export default function DashboardCharts({ dashboardData }: { dashboardData: Dash
                         <ResponsiveContainer width="100%" height="100%">
                             <PieChart>
                                 <Pie
-                                    data={ticketStatusData}
+                                    data={ticketStatusData as any}
                                     cx="50%"
                                     cy="50%"
                                     labelLine={false}
