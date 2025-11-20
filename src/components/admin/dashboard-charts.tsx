@@ -19,6 +19,7 @@ interface ChartData {
 interface TicketStatusData {
     name: string;
     value: number;
+    [key: string]: number | string; // Index signature to allow additional properties
 }
 
 export default function DashboardCharts({ dashboardData }: { dashboardData: DashboardData }) {
@@ -152,7 +153,7 @@ export default function DashboardCharts({ dashboardData }: { dashboardData: Dash
                         <ResponsiveContainer width="100%" height="100%">
                             <PieChart>
                                 <Pie
-                                    data={ticketStatusData as any}
+                                    data={ticketStatusData}
                                     cx="50%"
                                     cy="50%"
                                     labelLine={false}
