@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Tienda Virtual de Servicios
 
-## Getting Started
+Plataforma de comercio electrónico para servicios digitales con integración de pagos Wompi y gestión de tickets de soporte.
 
-First, run the development server:
+## 🚀 Características
+
+- ✅ Catálogo de servicios digitales
+- ✅ Sistema de autenticación con Supabase
+- ✅ Panel de administración completo
+- ✅ Dashboard de usuario
+- ✅ Sistema de tickets de soporte (con y sin registro)
+- ✅ Integración de pagos con Wompi
+- ✅ Gestión de pedidos
+- ✅ Diseño responsive con menú móvil tipo app
+- ✅ Tema oscuro moderno
+
+## 🛠️ Tecnologías
+
+- **Framework**: Next.js 16 (App Router + Turbopack)
+- **Base de datos**: Supabase (PostgreSQL)
+- **Autenticación**: Supabase Auth
+- **Pagos**: Wompi
+- **Estilos**: Tailwind CSS
+- **UI Components**: shadcn/ui
+- **Despliegue**: Netlify
+
+## 📦 Instalación
 
 ```bash
+# Clonar repositorio
+git clone https://github.com/soyalejandrolopez/tiendaservicio.git
+
+# Instalar dependencias
+npm install
+
+# Configurar variables de entorno
+cp .env.example .env.local
+
+# Ejecutar en desarrollo
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🌐 Demo en Vivo
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**URL**: https://voluble-cheesecake-a72281.netlify.app/
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📝 Variables de Entorno
 
-## Learn More
+```env
+NEXT_PUBLIC_SUPABASE_URL=tu_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=tu_supabase_anon_key
+SUPABASE_SERVICE_ROLE_KEY=tu_service_role_key
+NEXT_PUBLIC_WOMPI_PUBLIC_KEY=tu_wompi_public_key
+WOMPI_INTEGRITY_SECRET=tu_wompi_integrity_secret
+NEXT_PUBLIC_BASE_URL=tu_url_de_produccion
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 👤 Roles de Usuario
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Admin**: Acceso completo al panel de administración
+- **User**: Acceso al dashboard de usuario y tickets
+- **Guest**: Puede crear tickets sin registro
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📄 Licencia
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT
