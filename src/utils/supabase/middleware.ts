@@ -11,10 +11,10 @@ export async function updateSession(request: NextRequest) {
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
     const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 
+    // During build time, env vars might not be available. Skip auth check and continue.
     if (!supabaseUrl || !supabaseAnonKey) {
-        throw new Error(
-            'Missing Supabase URL or Anon Key. Please set NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY in your environment variables.'
-        )
+        console.warn('Supabase credentials not found. Skipping auth check.')
+        return response
     }
 
     const supabase = createServerClient(
