@@ -3,6 +3,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { revalidatePath } from "next/cache";
 
+export const dynamic = 'force-dynamic';
+
 async function cancelOrder(formData: FormData) {
     "use server";
     const id = formData.get("id") as string;

@@ -1,7 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: 'standalone',
+  // Remove standalone for Netlify - let @netlify/plugin-nextjs handle it
+  experimental: {
+    // Ensure server actions work properly
+    serverActions: {
+      bodySizeLimit: '2mb',
+    },
+  },
   async headers() {
     return [
       {

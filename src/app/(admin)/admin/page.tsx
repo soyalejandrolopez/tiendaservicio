@@ -2,6 +2,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { createClient } from "@/utils/supabase/server";
 import DashboardCharts from "@/components/admin/dashboard-charts";
 
+export const dynamic = 'force-dynamic';
+
 export default async function AdminDashboard() {
     const supabase = await createClient();
 

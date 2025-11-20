@@ -4,6 +4,8 @@ import { revalidatePath } from "next/cache";
 import Link from "next/link";
 import { PlusCircle, Trash2, Edit } from "lucide-react";
 
+export const dynamic = 'force-dynamic';
+
 async function deleteService(formData: FormData) {
     "use server";
     const id = formData.get("id") as string;

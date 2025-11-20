@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { revalidatePath } from "next/cache";
 import { Edit, MessageCircle } from "lucide-react";
 
+export const dynamic = 'force-dynamic';
+
 async function updateStatus(formData: FormData) {
     "use server";
     const id = formData.get("id") as string;

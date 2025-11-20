@@ -6,6 +6,8 @@ import Link from "next/link";
 import { ArrowRight, Star } from "lucide-react";
 import WompiButton from "@/components/wompi-button";
 
+export const dynamic = 'force-dynamic';
+
 interface ServicePageProps {
   params: Promise<{
     id: string;

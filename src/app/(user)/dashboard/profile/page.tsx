@@ -5,6 +5,8 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { revalidatePath } from "next/cache";
 
+export const dynamic = 'force-dynamic';
+
 async function updateProfile(formData: FormData) {
     "use server";
 

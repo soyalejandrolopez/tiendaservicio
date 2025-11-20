@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { PlusCircle, MessageCircle } from "lucide-react";
 
+export const dynamic = 'force-dynamic';
+
 export default async function UserTicketsPage() {
     const supabase = await createClient();
     const { data: { user } } = await supabase.auth.getUser();
