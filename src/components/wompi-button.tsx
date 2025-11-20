@@ -50,8 +50,20 @@ export default function WompiButton({ price, title }: WompiButtonProps) {
     }, [signature, price, reference]);
 
     return (
-        <div id="wompi-container" className="w-full">
-            {/* The script will inject the button here */}
-        </div>
+        <>
+            <style dangerouslySetInnerHTML={{__html: `
+                #wompi-container form button {
+                    width: 100% !important;
+                    padding: 16px 24px !important;
+                    font-size: 18px !important;
+                    font-weight: 600 !important;
+                    border-radius: 8px !important;
+                    min-height: 56px !important;
+                }
+            `}} />
+            <div id="wompi-container" className="w-full">
+                {/* The script will inject the button here */}
+            </div>
+        </>
     );
 }

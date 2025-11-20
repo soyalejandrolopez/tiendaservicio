@@ -33,9 +33,9 @@ export default async function ServicePage({ params }: ServicePageProps) {
   const reviewCount = 156;
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
       <div className="container py-4 md:py-8 max-w-5xl mx-auto">
-        <Link href="/" className="inline-flex items-center text-orange-500 hover:text-orange-600 mb-4 md:mb-6 transition-colors text-sm font-medium">
+        <Link href="/services" className="inline-flex items-center text-white hover:text-orange-400 mb-4 md:mb-6 transition-colors text-sm font-medium">
           &larr; Volver
         </Link>
 
@@ -79,10 +79,10 @@ export default async function ServicePage({ params }: ServicePageProps) {
             </Card>
 
             <Card className="bg-gradient-to-br from-orange-500 to-red-600 border-0 shadow-xl">
-              <CardContent className="pt-6 pb-6 space-y-4">
+              <CardContent className="pt-4 pb-4 space-y-3">
                 <div className="text-center">
                   <p className="text-xs text-orange-100 mb-1 uppercase tracking-wide">Precio</p>
-                  <span className="text-5xl md:text-6xl font-bold text-white">${formatPrice(service.price)}</span>
+                  <span className="text-3xl md:text-4xl font-bold text-white">${formatPrice(service.price)}</span>
                 </div>
                 <WompiButton price={Number(service.price)} title={service.title} />
               </CardContent>

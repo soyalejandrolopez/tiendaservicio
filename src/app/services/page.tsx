@@ -30,7 +30,7 @@ export default async function ServicesPage() {
             {services.map((service) => (
               <Link key={service.id} href={`/services/${service.id}`}>
                 <Card className="group overflow-hidden bg-white border border-slate-200 hover:border-orange-300 transition-all duration-300 hover:shadow-2xl hover:shadow-orange-500/20 flex flex-col h-full cursor-pointer">
-                  <div className="relative overflow-hidden">
+                  <div className="relative overflow-hidden aspect-video">
                     <Image
                       src={service.image_url || "/placeholder.svg"}
                       alt={service.title}
@@ -38,7 +38,7 @@ export default async function ServicesPage() {
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       quality={75}
                       priority
-                      className="aspect-video object-cover w-full group-hover:scale-105 transition-transform duration-500"
+                      className="object-cover w-full group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute top-3 right-3 bg-gradient-to-r from-orange-500 to-red-500 text-white px-3 py-1.5 md:px-4 md:py-2 rounded-full text-base md:text-lg font-bold shadow-lg">
                       ${formatPrice(service.price)}
