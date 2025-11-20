@@ -31,11 +31,12 @@ yarn-error.log*
 .pnpm-debug.log*
 
 # env files (can opt-in for committing if needed)
-# WARNING: .env.local is committed to repo for Netlify deployment
+# WARNING: .env.local and .env.production are committed to repo for Netlify deployment
 # This is NOT recommended for production - use Netlify env vars instead
 .env
 .env*.local
 !.env.local
+!.env.production
 !.env.example
 
 # vercel
