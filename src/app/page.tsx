@@ -5,15 +5,18 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 
-export const dynamic = 'force-dynamic';
-export const revalidate = 60; // Revalidate every 60 seconds
+// Remove force-dynamic to allow static generation with revalidation
+export const revalidate = 300; // Revalidate every 5 minutes instead of every request
 
 export default async function LandingPage() {
   const supabase = await createClient();
+
+  // Only fetch essential fields and limit to 6 services for homepage
   const { data: services } = await supabase
     .from("services")
     .select("id, title, description, price, image_url")
     .eq("active", true)
+    .order('created_at', { ascending: false })
     .limit(6);
 
   return (

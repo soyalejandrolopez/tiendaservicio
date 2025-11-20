@@ -5,8 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
-export const dynamic = 'force-dynamic';
-export const revalidate = 60;
+export const revalidate = 300;
 
 export default async function ServicesPage() {
   const supabase = await createClient();

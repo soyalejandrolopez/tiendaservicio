@@ -7,8 +7,7 @@ import Image from "next/image";
 import { ArrowRight, Star } from "lucide-react";
 import WompiButton from "@/components/wompi-button";
 
-export const dynamic = 'force-dynamic';
-export const revalidate = 60;
+export const revalidate = 300;
 
 interface ServicePageProps {
   params: Promise<{
