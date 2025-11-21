@@ -13,7 +13,7 @@ export default async function Navbar() {
                 <div className="hidden md:flex items-center justify-center gap-8 flex-1">
                     <Link href="/" className="flex items-center space-x-2">
                         <span className="text-xl font-bold text-white drop-shadow-[0_0_0_#000]">
-                            alejandrotech servicios
+                            Servicios digitales/IA Popayan
                         </span>
                     </Link>
                     <div className="flex items-center gap-6 text-sm font-bold text-white">
@@ -28,7 +28,7 @@ export default async function Navbar() {
                 <div className="md:hidden flex items-center justify-center flex-1">
                     <Link href="/" className="flex items-center space-x-2">
                         <span className="text-xl font-bold text-white drop-shadow-[0_0_0_#000]">
-                            alejandrotech servicios
+                            Servicios digitales/IA Popayan
                         </span>
                     </Link>
                 </div>

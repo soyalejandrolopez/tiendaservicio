@@ -13,8 +13,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Virtual Service Store - Entretenimiento Digital",
-  description: "Servicios digitales premium para entretenimiento, gaming y streaming",
+  title: "Servicios digitales/IA Popayan - Soluciones Digitales e Inteligencia Artificial",
+  description: "Servicios digitales premium e inteligencia artificial en Popayán. Soluciones innovadoras para tu negocio",
 };
 
 export default function RootLayout({
