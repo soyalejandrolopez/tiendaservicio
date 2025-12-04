@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { formatPrice } from "@/lib/format";
+import HeroSection from "@/components/home/hero-section";
 
 // Remove force-dynamic to allow static generation with revalidation
 export const revalidate = 300; // Revalidate every 5 minutes instead of every request
@@ -22,41 +23,7 @@ export default async function LandingPage() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <section className="w-full py-8 md:py-16 lg:py-20 xl:py-28 relative text-white">
-        {/* Entertainment overlay - more subtle */}
-        <div className="absolute inset-0 bg-gradient-to-r from-purple-900/20 via-transparent to-blue-900/20"></div>
-
-        <div className="container px-4 md:px-6 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-8 items-center max-w-6xl mx-auto">
-            <div className="space-y-3">
-              <h1 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl lg:text-5xl/none">
-                Servicios Digitales Premium
-              </h1>
-              <p className="text-base text-gray-400 md:text-lg">
-                Desbloquea tu potencial con nuestra selección de servicios profesionales. Rápidos, confiables y seguros.
-              </p>
-              <div className="pt-3">
-                <Link href="#services">
-                  <Button className="bg-white text-black hover:bg-gray-200">
-                    Ver Servicios
-                  </Button>
-                </Link>
-              </div>
-            </div>
-            <div className="flex justify-center">
-              <Image
-                src="/digital-services.jpg"
-                alt="Servicios Digitales Premium"
-                className="rounded-xl shadow-2xl w-full max-w-md h-auto"
-                width={500}
-                height={333}
-                priority
-                quality={85}
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+      <HeroSection />
 
       <section id="services" className="w-full py-8 md:py-16 lg:py-20 relative">
         {/* Entertainment-themed section background */}

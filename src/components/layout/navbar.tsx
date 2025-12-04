@@ -8,50 +8,66 @@ export default async function Navbar() {
     const { data: { user } } = await supabase.auth.getUser()
 
     return (
-        <nav className="hidden md:block border-b bg-black/50 sticky top-0 z-50">
-            <div className="container flex h-16 items-center justify-between">
-                <div className="hidden md:flex items-center justify-center gap-8 flex-1">
-                    <Link href="/" className="flex items-center space-x-2">
-                        <span className="text-xl font-bold text-white drop-shadow-[0_0_0_#000]">
-                            Servicios digitales/IA Popayan
+        <nav className="hidden md:block fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+            <div className="absolute inset-0 bg-black/40 backdrop-blur-md border-b border-white/10" />
+
+            <div className="container relative flex h-16 items-center justify-between">
+                <div className="hidden md:flex items-center gap-12 flex-1">
+                    <Link href="/" className="flex items-center space-x-2 group">
+                        <div className="relative">
+                            <span className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-orange-100 to-amber-200 font-playfair tracking-tight group-hover:text-white transition-colors duration-300">
+                                Servicios Digitales
+                            </span>
+                            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-amber-400 transition-all duration-300 group-hover:w-full" />
+                        </div>
+                        <span className="text-sm font-light text-white/80 tracking-widest uppercase border-l border-white/20 pl-2 ml-2">
+                            Popayán
                         </span>
                     </Link>
-                    <div className="flex items-center gap-6 text-sm font-bold text-white">
-                        <Link href="/services" className="hover:text-blue-300 transition-colors hover:underline underline-offset-4">
-                            Servicios
+
+                    <div className="flex items-center gap-8 text-sm font-medium text-white/90">
+                        <Link href="/services" className="relative group py-2">
+                            <span className="group-hover:text-amber-300 transition-colors">Servicios</span>
+                            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-400 transition-all duration-300 group-hover:w-full" />
                         </Link>
-                        <Link href="/support" className="hover:text-blue-300 transition-colors hover:underline underline-offset-4">
-                            Soporte
+                        <Link href="/support" className="relative group py-2">
+                            <span className="group-hover:text-amber-300 transition-colors">Soporte</span>
+                            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-400 transition-all duration-300 group-hover:w-full" />
                         </Link>
                     </div>
                 </div>
+
                 <div className="md:hidden flex items-center justify-center flex-1">
                     <Link href="/" className="flex items-center space-x-2">
-                        <span className="text-xl font-bold text-white drop-shadow-[0_0_0_#000]">
-                            Servicios digitales/IA Popayan
+                        <span className="text-xl font-bold text-white">
+                            SD/IA Popayán
                         </span>
                     </Link>
                 </div>
 
-                <div className="hidden md:flex items-center gap-4">
+                <div className="hidden md:flex items-center gap-6">
                     {user ? (
                         <div className="flex items-center gap-4">
                             <Link href="/dashboard">
-                                <Button variant="ghost" className="hover:bg-accent text-white font-bold">Panel</Button>
+                                <Button variant="ghost" className="text-white hover:text-amber-300 hover:bg-white/10">
+                                    Panel de Control
+                                </Button>
                             </Link>
                             <form action="/auth/signout" method="post">
-                                <Button variant="outline" type="submit" className="text-black border-black hover:bg-black hover:text-white font-bold">
+                                <Button variant="outline" type="submit" className="glass-button text-white border-white/30 hover:bg-white/10 hover:border-white/50">
                                     Cerrar Sesión
                                 </Button>
                             </form>
                         </div>
                     ) : (
                         <div className="flex items-center gap-4">
-                            <Link href="/login" className="text-sm font-bold text-white hover:text-blue-300 transition-colors hover:underline underline-offset-4">
+                            <Link href="/login" className="text-xs font-medium text-white/80 hover:text-white transition-colors">
                                 Iniciar Sesión
                             </Link>
                             <Link href="/register">
-                                <Button className="bg-blue-600 hover:bg-blue-700 text-white font-bold">Registro</Button>
+                                <Button className="bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white border-0 shadow-lg shadow-orange-500/20 h-8 px-4 text-xs">
+                                    Comenzar Ahora
+                                </Button>
                             </Link>
                         </div>
                     )}
