@@ -2,7 +2,7 @@ import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { LayoutDashboard, Ticket, User, ShoppingBag } from "lucide-react";
+import { LayoutDashboard, Ticket, User, ShoppingBag, Package } from "lucide-react";
 
 export default async function UserDashboardLayout({
     children,
@@ -61,6 +61,13 @@ export default async function UserDashboardLayout({
                         >
                             <ShoppingBag className="h-4 w-4" />
                             Mis Pedidos
+                        </Link>
+                        <Link
+                            href="/dashboard/services"
+                            className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-slate-300 transition-all hover:bg-white/10 hover:text-white hover:shadow-lg"
+                        >
+                            <Package className="h-4 w-4" />
+                            Servicios
                         </Link>
                         <Link
                             href="/dashboard/profile"
