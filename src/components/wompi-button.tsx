@@ -3,19 +3,38 @@
 import { useEffect, useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
+import { createClient } from "@/utils/supabase/client";
 
 interface WompiButtonProps {
     price: number;
     title: string;
+    serviceId: string;
 }
 
-export default function WompiButton({ price, title }: WompiButtonProps) {
+export default function WompiButton({ price, title, serviceId }: WompiButtonProps) {
     const [signature, setSignature] = useState<string>("");
-    const [reference] = useState(`REF-${Date.now()}`);
+    const [reference, setReference] = useState<string>("");
     const [loading, setLoading] = useState(true);
     const scriptLoaded = useRef(false);
+    const supabase = createClient();
 
     useEffect(() => {
+        async function init() {
+            const { data: { user } } = await supabase.auth.getUser();
+            if (user) {
+                // Format: ORDER-{serviceId}-{userId}-{timestamp}
+                setReference(`ORDER-${serviceId}-${user.id}-${Date.now()}`);
+            } else {
+                // Fallback if no user (shouldn't happen in checkout flow)
+                setReference(`REF-${Date.now()}`);
+            }
+        }
+        init();
+    }, [serviceId, supabase]);
+
+    useEffect(() => {
+        if (!reference) return;
+
         async function getSignature() {
             try {
                 const response = await fetch('/api/wompi', {
@@ -35,7 +54,7 @@ export default function WompiButton({ price, title }: WompiButtonProps) {
     }, [price, reference]);
 
     useEffect(() => {
-        if (!signature || scriptLoaded.current) return;
+        if (!signature || scriptLoaded.current || !reference) return;
 
         const container = document.getElementById("wompi-container");
         if (!container) return;

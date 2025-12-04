@@ -118,11 +118,10 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
                   {[...Array(5)].map((_, i) => (
                     <Star
                       key={i}
-                      className={`h-5 w-5 ${
-                        i < Math.floor(averageRating)
+                      className={`h-5 w-5 ${i < Math.floor(averageRating)
                           ? "text-amber-400 fill-amber-400"
                           : "text-white/20"
-                      }`}
+                        }`}
                     />
                   ))}
                 </div>
@@ -155,7 +154,7 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
                     </motion.span>
                     <p className="text-xs text-white/60 mt-2">COP - Pago único</p>
                   </div>
-                  <WompiButton price={Number(service.price)} title={service.title} />
+                  <WompiButton price={Number(service.price)} title={service.title} serviceId={service.id} />
                 </CardContent>
               </Card>
             </motion.div>

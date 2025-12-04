@@ -136,7 +136,7 @@ export default async function CheckoutPage({ searchParams }: CheckoutPageProps) 
                                         </div>
 
                                         <div className="pt-2">
-                                            <WompiButton price={Number(service.price)} title={service.title} />
+                                            <WompiButton price={Number(service.price)} title={service.title} serviceId={service.id} />
                                             <p className="text-center text-xs text-slate-500 mt-4">
                                                 Al hacer clic en pagar, aceptas nuestros términos y condiciones.
                                             </p>
