@@ -27,6 +27,7 @@ export async function signup(formData: FormData) {
     const supabase = await createClient();
     const email = formData.get("email") as string;
     const password = formData.get("password") as string;
+    const returnUrl = formData.get("returnUrl") as string;
 
     const { error } = await supabase.auth.signUp({
         email,
@@ -37,10 +38,20 @@ export async function signup(formData: FormData) {
     });
 
     if (error) {
-        // Redirect to register page with error message
-        redirect(`/register?error=${encodeURIComponent(error.message)}`);
+        // Redirect to register page with error message and preserve returnUrl
+        const redirectUrl = new URL("/register", process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000");
+        redirectUrl.searchParams.set("error", error.message);
+        if (returnUrl) {
+            redirectUrl.searchParams.set("returnUrl", returnUrl);
+        }
+        redirect(redirectUrl.toString());
     }
 
     revalidatePath("/", "layout");
+
+    if (returnUrl) {
+        redirect(returnUrl);
+    }
+
     redirect("/dashboard");
 }

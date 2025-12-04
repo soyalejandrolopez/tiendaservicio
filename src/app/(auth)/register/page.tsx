@@ -13,6 +13,7 @@ interface RegisterPageProps {
 export default async function RegisterPage({ searchParams }: RegisterPageProps) {
     const params = await searchParams;
     const errorMessage = typeof params.error === 'string' ? params.error : '';
+    const returnUrl = typeof params.returnUrl === 'string' ? params.returnUrl : '';
 
     return (
         <div className="min-h-screen flex items-center justify-center pt-20 pb-12 px-4">
@@ -24,6 +25,7 @@ export default async function RegisterPage({ searchParams }: RegisterPageProps) 
                     </CardDescription>
                 </CardHeader>
                 <form>
+                    <input type="hidden" name="returnUrl" value={returnUrl} />
                     <CardContent className="space-y-4">
                         <div className="space-y-2">
                             <label htmlFor="email" className="text-sm font-medium text-slate-200">Correo Electrónico</label>
@@ -58,7 +60,7 @@ export default async function RegisterPage({ searchParams }: RegisterPageProps) 
                         </Button>
                         <p className="text-sm text-slate-400 text-center">
                             ¿Ya tienes una cuenta?{" "}
-                            <Link href="/login" className="text-amber-400 hover:text-amber-300 underline transition-colors">
+                            <Link href={`/login${returnUrl ? `?returnUrl=${encodeURIComponent(returnUrl)}` : ''}`} className="text-amber-400 hover:text-amber-300 underline transition-colors">
                                 Iniciar Sesión
                             </Link>
                         </p>

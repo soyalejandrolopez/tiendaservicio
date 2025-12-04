@@ -138,7 +138,13 @@ export default async function ServicePage({ params }: ServicePageProps) {
                 </div>
 
                 <div className="pt-4">
-                  <WompiButton price={Number(service.price)} title={service.title} />
+                  <Link href={`/checkout?serviceId=${service.id}`} className="block w-full">
+                    <Button
+                      className="w-full h-14 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white font-bold text-lg shadow-lg transition-all duration-300 transform hover:scale-[1.02]"
+                    >
+                      Comprar Ahora
+                    </Button>
+                  </Link>
                   <p className="text-center text-xs text-slate-500 mt-4">
                     Pago 100% seguro procesado por Wompi
                   </p>

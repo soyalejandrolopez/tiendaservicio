@@ -38,11 +38,15 @@ export default function PaymentResultPage({
         <CardContent className="text-center">
           <p className="text-muted-foreground mb-6">{statusMessage}</p>
           <div className="flex flex-col sm:flex-row gap-2">
-            <Link href="/" className="flex-1">
-              <Button variant="outline">Volver al Inicio</Button>
+            <Link href="/dashboard/orders" className="flex-1">
+              <Button className="w-full bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white font-bold">
+                Ver Mis Pedidos
+              </Button>
             </Link>
-            <Link href="/services" className="flex-1">
-              <Button>Ver Servicios</Button>
+            <Link href="/" className="flex-1">
+              <Button variant="outline" className="w-full border-white/20 text-slate-300 hover:bg-white/10 hover:text-white">
+                Volver al Inicio
+              </Button>
             </Link>
           </div>
         </CardContent>
