@@ -14,35 +14,50 @@ export default function LoginPage({ searchParams }: LoginPageProps) {
     const errorMessage = typeof searchParams.error === 'string' ? searchParams.error : '';
 
     return (
-        <div className="flex min-h-[calc(100vh-4rem)] items-center justify-center py-12">
-            <Card className="w-full max-w-md">
-                <CardHeader>
-                    <CardTitle>Iniciar Sesión</CardTitle>
-                    <CardDescription>
+        <div className="min-h-screen flex items-center justify-center pt-20 pb-12 px-4">
+            <Card className="w-full max-w-md mx-auto glass-card border-white/10 bg-black/40 backdrop-blur-md">
+                <CardHeader className="text-center space-y-2">
+                    <CardTitle className="text-3xl font-bold text-white font-playfair">Iniciar Sesión</CardTitle>
+                    <CardDescription className="text-slate-300">
                         Ingresa tu correo electrónico a continuación para iniciar sesión en tu cuenta
                     </CardDescription>
                 </CardHeader>
                 <form>
                     <CardContent className="space-y-4">
                         <div className="space-y-2">
-                            <label htmlFor="email">Correo Electrónico</label>
-                            <Input id="email" name="email" type="email" required placeholder="m@ejemplo.com" />
+                            <label htmlFor="email" className="text-sm font-medium text-slate-200">Correo Electrónico</label>
+                            <Input
+                                id="email"
+                                name="email"
+                                type="email"
+                                required
+                                placeholder="m@ejemplo.com"
+                                className="bg-black/50 border-white/20 text-white placeholder:text-slate-500 focus-visible:ring-amber-500"
+                            />
                         </div>
                         <div className="space-y-2">
-                            <label htmlFor="password">Contraseña</label>
-                            <Input id="password" name="password" type="password" required />
+                            <label htmlFor="password" className="text-sm font-medium text-slate-200">Contraseña</label>
+                            <Input
+                                id="password"
+                                name="password"
+                                type="password"
+                                required
+                                className="bg-black/50 border-white/20 text-white placeholder:text-slate-500 focus-visible:ring-amber-500"
+                            />
                         </div>
                         {errorMessage && (
-                            <div className="text-red-500 text-sm p-2 bg-red-50 rounded">
+                            <div className="text-red-400 text-sm p-3 bg-red-900/20 border border-red-900/50 rounded">
                                 {errorMessage}
                             </div>
                         )}
                     </CardContent>
                     <CardFooter className="flex flex-col gap-4">
-                        <Button formAction={login} className="w-full">Iniciar Sesión</Button>
-                        <p className="text-sm text-muted-foreground text-center">
+                        <Button formAction={login} className="w-full bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white font-bold py-5">
+                            Iniciar Sesión
+                        </Button>
+                        <p className="text-sm text-slate-400 text-center">
                             ¿No tienes una cuenta?{" "}
-                            <Link href="/register" className="underline">
+                            <Link href="/register" className="text-amber-400 hover:text-amber-300 underline transition-colors">
                                 Registrarse
                             </Link>
                         </p>

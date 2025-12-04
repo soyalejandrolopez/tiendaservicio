@@ -36,41 +36,41 @@ export default async function UserDashboard() {
 
     return (
         <div className="space-y-4">
-            <h1 className="text-3xl font-bold">¡Bienvenido de nuevo, {profile?.full_name || 'Usuario'}!</h1>
+            <h1 className="text-3xl font-bold text-white font-playfair">¡Bienvenido de nuevo, {profile?.full_name || 'Usuario'}!</h1>
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                <Card>
+                <Card className="glass-card bg-black/40 backdrop-blur-md border-white/10">
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-sm font-medium">Mis Tickets</CardTitle>
+                        <CardTitle className="text-sm font-medium text-slate-300">Mis Tickets</CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <div className="text-2xl font-bold">{dashboardData.userTicketsCount}</div>
+                        <div className="text-2xl font-bold text-white">{dashboardData.userTicketsCount}</div>
                     </CardContent>
                 </Card>
-                <Card>
+                <Card className="glass-card bg-black/40 backdrop-blur-md border-white/10">
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-sm font-medium">Tickets Abiertos</CardTitle>
+                        <CardTitle className="text-sm font-medium text-slate-300">Tickets Abiertos</CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <div className="text-2xl font-bold">{dashboardData.openUserTicketsCount}</div>
+                        <div className="text-2xl font-bold text-white">{dashboardData.openUserTicketsCount}</div>
                     </CardContent>
                 </Card>
-                <Card>
+                <Card className="glass-card bg-black/40 backdrop-blur-md border-white/10">
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-sm font-medium">Estado de Cuenta</CardTitle>
+                        <CardTitle className="text-sm font-medium text-slate-300">Estado de Cuenta</CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <div className="text-2xl font-bold">Activo</div>
+                        <div className="text-2xl font-bold text-emerald-400">Activo</div>
                     </CardContent>
                 </Card>
             </div>
 
             <div className="grid gap-4">
-                <Card>
+                <Card className="glass-card bg-black/40 backdrop-blur-md border-white/10">
                     <CardHeader>
-                        <CardTitle>Actividad Reciente</CardTitle>
+                        <CardTitle className="text-white font-playfair">Actividad Reciente</CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <p className="text-muted-foreground">Tus últimos tickets y actualizaciones de servicios aparecerán aquí.</p>
+                        <p className="text-slate-400">Tus últimos tickets y actualizaciones de servicios aparecerán aquí.</p>
                     </CardContent>
                 </Card>
             </div>

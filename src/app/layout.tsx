@@ -6,6 +6,7 @@ import Footer from "@/components/layout/footer";
 import MobileBottomNav from "@/components/layout/mobile-bottom-nav";
 import { cn } from "@/lib/utils";
 import BackgroundSlideshow from "@/components/ui/BackgroundSlideshow";
+import ConditionalLayout from "@/components/layout/conditional-layout";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -41,9 +42,14 @@ export default function RootLayout({
         <BackgroundSlideshow />
 
         <div className="min-h-screen flex flex-col relative z-0">
-          <Navbar />
-          <main className="flex-1 pb-20 md:pb-0">{children}</main>
-          <Footer />
+          <ConditionalLayout
+            navbar={<Navbar />}
+            footer={<Footer />}
+          >
+            <main className="flex-grow">
+              {children}
+            </main>
+          </ConditionalLayout>
           <MobileBottomNav />
         </div>
       </body>

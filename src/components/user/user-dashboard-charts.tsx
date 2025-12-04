@@ -92,23 +92,23 @@ export default function UserDashboardCharts({ dashboardData }: { dashboardData: 
     if (loading) {
         return (
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <Card>
+                <Card className="glass-card bg-black/40 backdrop-blur-md border-white/10">
                     <CardHeader>
-                        <CardTitle className="text-lg">Mis Tickets por Mes</CardTitle>
+                        <CardTitle className="text-lg text-white font-playfair">Mis Tickets por Mes</CardTitle>
                     </CardHeader>
                     <CardContent>
                         <div className="h-80 flex items-center justify-center">
-                            <p className="text-muted-foreground">Cargando datos...</p>
+                            <p className="text-slate-400">Cargando datos...</p>
                         </div>
                     </CardContent>
                 </Card>
-                <Card>
+                <Card className="glass-card bg-black/40 backdrop-blur-md border-white/10">
                     <CardHeader>
-                        <CardTitle className="text-lg">Estado de Mis Tickets</CardTitle>
+                        <CardTitle className="text-lg text-white font-playfair">Estado de Mis Tickets</CardTitle>
                     </CardHeader>
                     <CardContent>
                         <div className="h-80 flex items-center justify-center">
-                            <p className="text-muted-foreground">Cargando datos...</p>
+                            <p className="text-slate-400">Cargando datos...</p>
                         </div>
                     </CardContent>
                 </Card>
@@ -118,9 +118,9 @@ export default function UserDashboardCharts({ dashboardData }: { dashboardData: 
 
     return (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <Card>
+            <Card className="glass-card bg-black/40 backdrop-blur-md border-white/10">
                 <CardHeader>
-                    <CardTitle className="text-lg">Mis Tickets por Mes</CardTitle>
+                    <CardTitle className="text-lg text-white font-playfair">Mis Tickets por Mes</CardTitle>
                 </CardHeader>
                 <CardContent>
                     <div className="h-80">
@@ -129,20 +129,23 @@ export default function UserDashboardCharts({ dashboardData }: { dashboardData: 
                                 data={monthlyData}
                                 margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
                             >
-                                <CartesianGrid strokeDasharray="3 3" />
-                                <XAxis dataKey="name" />
-                                <YAxis />
-                                <Tooltip />
-                                <Bar dataKey="tickets" fill="#3b82f6" name="Tickets" />
+                                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
+                                <XAxis dataKey="name" stroke="#94a3b8" />
+                                <YAxis stroke="#94a3b8" />
+                                <Tooltip
+                                    contentStyle={{ backgroundColor: 'rgba(0,0,0,0.8)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '8px', color: '#fff' }}
+                                    itemStyle={{ color: '#fff' }}
+                                />
+                                <Bar dataKey="tickets" fill="#f59e0b" name="Tickets" radius={[4, 4, 0, 0]} />
                             </BarChart>
                         </ResponsiveContainer>
                     </div>
                 </CardContent>
             </Card>
 
-            <Card>
+            <Card className="glass-card bg-black/40 backdrop-blur-md border-white/10">
                 <CardHeader>
-                    <CardTitle className="text-lg">Estado de Mis Tickets</CardTitle>
+                    <CardTitle className="text-lg text-white font-playfair">Estado de Mis Tickets</CardTitle>
                 </CardHeader>
                 <CardContent>
                     <div className="h-80">
@@ -160,10 +163,13 @@ export default function UserDashboardCharts({ dashboardData }: { dashboardData: 
                                     nameKey="name"
                                 >
                                     {ticketStatusData.map((entry, index) => (
-                                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} stroke="rgba(0,0,0,0.5)" />
                                     ))}
                                 </Pie>
-                                <Tooltip />
+                                <Tooltip
+                                    contentStyle={{ backgroundColor: 'rgba(0,0,0,0.8)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '8px', color: '#fff' }}
+                                    itemStyle={{ color: '#fff' }}
+                                />
                             </PieChart>
                         </ResponsiveContainer>
                     </div>

@@ -29,55 +29,63 @@ async function submitGuestTicket(formData: FormData) {
 
 export default function SupportPage() {
     return (
-        <div className="container py-12">
-            <Card className="max-w-2xl mx-auto">
-                <CardHeader>
-                    <CardTitle>Soporte - Crear Ticket</CardTitle>
-                    <p className="text-sm text-muted-foreground">
+        <div className="min-h-screen flex items-center justify-center pt-20 pb-12 px-4">
+            <Card className="w-full max-w-2xl mx-auto glass-card border-white/10 bg-black/40 backdrop-blur-md">
+                <CardHeader className="text-center space-y-2">
+                    <CardTitle className="text-3xl font-bold text-white font-playfair">Soporte - Crear Ticket</CardTitle>
+                    <p className="text-slate-300">
                         ¿Necesitas ayuda? Envíanos un ticket y te responderemos pronto.
                     </p>
                 </CardHeader>
                 <CardContent>
-                    <form action={submitGuestTicket} className="space-y-4">
-                        <div className="space-y-2">
-                            <label htmlFor="guest_name">Nombre Completo</label>
-                            <Input 
-                                id="guest_name" 
-                                name="guest_name" 
-                                required 
-                                placeholder="Tu nombre completo"
-                            />
+                    <form action={submitGuestTicket} className="space-y-6">
+                        <div className="grid md:grid-cols-2 gap-4">
+                            <div className="space-y-2">
+                                <label htmlFor="guest_name" className="text-sm font-medium text-slate-200">Nombre Completo</label>
+                                <Input
+                                    id="guest_name"
+                                    name="guest_name"
+                                    required
+                                    placeholder="Tu nombre completo"
+                                    className="bg-black/50 border-white/20 text-white placeholder:text-slate-500 focus-visible:ring-amber-500"
+                                />
+                            </div>
+                            <div className="space-y-2">
+                                <label htmlFor="guest_email" className="text-sm font-medium text-slate-200">Correo Electrónico</label>
+                                <Input
+                                    id="guest_email"
+                                    name="guest_email"
+                                    type="email"
+                                    required
+                                    placeholder="tu@email.com"
+                                    className="bg-black/50 border-white/20 text-white placeholder:text-slate-500 focus-visible:ring-amber-500"
+                                />
+                            </div>
                         </div>
                         <div className="space-y-2">
-                            <label htmlFor="guest_email">Correo Electrónico</label>
-                            <Input 
-                                id="guest_email" 
-                                name="guest_email" 
-                                type="email" 
-                                required 
-                                placeholder="tu@email.com"
-                            />
-                        </div>
-                        <div className="space-y-2">
-                            <label htmlFor="subject">Asunto</label>
-                            <Input 
-                                id="subject" 
-                                name="subject" 
-                                required 
+                            <label htmlFor="subject" className="text-sm font-medium text-slate-200">Asunto</label>
+                            <Input
+                                id="subject"
+                                name="subject"
+                                required
                                 placeholder="Describe brevemente tu problema"
+                                className="bg-black/50 border-white/20 text-white placeholder:text-slate-500 focus-visible:ring-amber-500"
                             />
                         </div>
                         <div className="space-y-2">
-                            <label htmlFor="description">Descripción</label>
-                            <Textarea 
-                                id="description" 
-                                name="description" 
-                                required 
+                            <label htmlFor="description" className="text-sm font-medium text-slate-200">Descripción</label>
+                            <Textarea
+                                id="description"
+                                name="description"
+                                required
                                 placeholder="Proporciona más detalles sobre tu problema"
                                 rows={6}
+                                className="bg-black/50 border-white/20 text-white placeholder:text-slate-500 focus-visible:ring-amber-500 resize-none"
                             />
                         </div>
-                        <Button type="submit" className="w-full">Enviar Ticket</Button>
+                        <Button type="submit" className="w-full bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white font-bold py-6">
+                            Enviar Ticket
+                        </Button>
                     </form>
                 </CardContent>
             </Card>

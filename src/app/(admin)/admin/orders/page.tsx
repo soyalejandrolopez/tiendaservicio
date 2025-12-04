@@ -67,62 +67,61 @@ export default async function OrdersPage() {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold">Gestión de Pedidos</h1>
+        <h1 className="text-3xl font-bold text-white font-playfair">Gestión de Pedidos</h1>
       </div>
 
       {orders.length === 0 ? (
-        <Card>
+        <Card className="glass-card bg-black/40 backdrop-blur-md border-white/10">
           <CardHeader>
-            <CardTitle>No hay pedidos</CardTitle>
+            <CardTitle className="text-white">No hay pedidos</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-muted-foreground">Aún no hay pedidos registrados en el sistema.</p>
+            <p className="text-slate-300">Aún no hay pedidos registrados en el sistema.</p>
           </CardContent>
         </Card>
       ) : (
-        <div className="rounded-md border">
+        <div className="rounded-xl border border-white/10 glass-card bg-black/40 backdrop-blur-md overflow-hidden">
           <table className="w-full">
-            <thead className="border-b">
+            <thead className="border-b border-white/10 bg-white/5">
               <tr>
-                <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground w-[50px]">#</th>
-                <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">ID Pedido</th>
-                <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">Cliente</th>
-                <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">Total</th>
-                <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">Estado</th>
-                <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">Fecha</th>
-                <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">Acciones</th>
+                <th className="h-12 px-6 text-left align-middle font-medium text-slate-300 w-[50px]">#</th>
+                <th className="h-12 px-6 text-left align-middle font-medium text-slate-300">ID Pedido</th>
+                <th className="h-12 px-6 text-left align-middle font-medium text-slate-300">Cliente</th>
+                <th className="h-12 px-6 text-left align-middle font-medium text-slate-300">Total</th>
+                <th className="h-12 px-6 text-left align-middle font-medium text-slate-300">Estado</th>
+                <th className="h-12 px-6 text-left align-middle font-medium text-slate-300">Fecha</th>
+                <th className="h-12 px-6 text-left align-middle font-medium text-slate-300">Acciones</th>
               </tr>
             </thead>
             <tbody>
               {orders.map((order, index) => (
-                <tr key={order.id} className="border-b">
-                  <td className="p-4 align-middle">{index + 1}</td>
-                  <td className="p-4 align-middle font-medium">#{order.id}</td>
-                  <td className="p-4 align-middle text-sm text-muted-foreground">
+                <tr key={order.id} className="border-b border-white/10 hover:bg-white/5 transition-colors">
+                  <td className="p-6 align-middle text-white/70">{index + 1}</td>
+                  <td className="p-6 align-middle font-medium text-white">#{order.id.slice(0, 8)}...</td>
+                  <td className="p-6 align-middle text-sm text-slate-300">
                     {order.profiles?.full_name || order.profiles?.email || 'Cliente Anónimo'}
                   </td>
-                  <td className="p-4 align-middle">${order.total_amount}</td>
-                  <td className="p-4 align-middle">
-                    <span className={`px-2 py-1 rounded-full text-xs ${
-                      order.status === 'completed' ? 'bg-green-100 text-green-800' :
-                      order.status === 'processing' ? 'bg-yellow-100 text-yellow-800' :
-                      order.status === 'cancelled' ? 'bg-red-100 text-red-800' :
-                      'bg-blue-100 text-blue-800'
-                    }`}>
+                  <td className="p-6 align-middle text-amber-400 font-medium">${order.total_amount}</td>
+                  <td className="p-6 align-middle">
+                    <span className={`px-3 py-1 rounded-full text-xs font-medium border ${order.status === 'completed' ? 'bg-green-500/20 text-green-300 border-green-500/30' :
+                        order.status === 'processing' ? 'bg-yellow-500/20 text-yellow-300 border-yellow-500/30' :
+                          order.status === 'cancelled' ? 'bg-red-500/20 text-red-300 border-red-500/30' :
+                            'bg-blue-500/20 text-blue-300 border-blue-500/30'
+                      }`}>
                       {order.status === 'completed' ? 'Completado' :
-                       order.status === 'processing' ? 'Procesando' :
-                       order.status === 'cancelled' ? 'Cancelado' :
-                       'Pendiente'}
+                        order.status === 'processing' ? 'Procesando' :
+                          order.status === 'cancelled' ? 'Cancelado' :
+                            'Pendiente'}
                     </span>
                   </td>
-                  <td className="p-4 align-middle text-sm text-muted-foreground">
+                  <td className="p-6 align-middle text-sm text-slate-400">
                     {new Date(order.created_at).toLocaleDateString()}
                   </td>
-                  <td className="p-4 align-middle">
+                  <td className="p-6 align-middle">
                     <Link href={`/admin/orders/${order.id}`}>
-                      <Button variant="outline" size="sm" title="Ver pedido">
+                      <Button variant="ghost" size="sm" className="text-amber-400 hover:text-amber-300 hover:bg-amber-400/10" title="Ver pedido">
                         <Eye className="h-4 w-4" />
                       </Button>
                     </Link>

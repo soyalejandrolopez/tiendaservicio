@@ -167,7 +167,7 @@ export default function HeroSection() {
 
       {/* Main content */}
       <motion.div
-        className="container relative z-10 px-4"
+        className="container px-4 md:px-6 relative z-10 text-center mx-auto"
         style={{ y: contentY, opacity }}
         variants={containerVariants}
         initial="hidden"

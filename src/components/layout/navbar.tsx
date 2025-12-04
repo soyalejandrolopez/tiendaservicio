@@ -11,8 +11,9 @@ export default async function Navbar() {
         <nav className="hidden md:block fixed top-0 left-0 right-0 z-50 transition-all duration-300">
             <div className="absolute inset-0 bg-black/40 backdrop-blur-md border-b border-white/10" />
 
-            <div className="container relative flex h-16 items-center justify-between">
-                <div className="hidden md:flex items-center gap-12 flex-1">
+            <div className="container relative flex h-16 items-center justify-center">
+                {/* Desktop Center Group: Logo + Links */}
+                <div className="hidden md:flex items-center gap-12">
                     <Link href="/" className="flex items-center space-x-2 group">
                         <div className="relative">
                             <span className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-orange-100 to-amber-200 font-playfair tracking-tight group-hover:text-white transition-colors duration-300">
@@ -37,7 +38,8 @@ export default async function Navbar() {
                     </div>
                 </div>
 
-                <div className="md:hidden flex items-center justify-center flex-1">
+                {/* Mobile Logo */}
+                <div className="md:hidden flex items-center justify-center">
                     <Link href="/" className="flex items-center space-x-2">
                         <span className="text-xl font-bold text-white">
                             SD/IA Popayán
@@ -45,7 +47,8 @@ export default async function Navbar() {
                     </Link>
                 </div>
 
-                <div className="hidden md:flex items-center gap-6">
+                {/* Desktop Right Group: Auth Buttons */}
+                <div className="hidden md:flex items-center gap-6 absolute right-4 lg:right-8">
                     {user ? (
                         <div className="flex items-center gap-4">
                             <Link href="/dashboard">
@@ -73,8 +76,11 @@ export default async function Navbar() {
                     )}
                 </div>
 
-                <MobileMenu isLoggedIn={!!user} />
+                {/* Mobile Menu Button */}
+                <div className="md:hidden absolute right-4">
+                    <MobileMenu isLoggedIn={!!user} />
+                </div>
             </div>
-        </nav>
+        </nav >
     )
 }

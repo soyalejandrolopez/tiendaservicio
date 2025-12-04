@@ -28,29 +28,30 @@ export default async function AdminDashboard() {
 
     return (
         <div className="space-y-6">
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-                <Card>
+            <h1 className="text-3xl font-bold text-white font-playfair">Resumen General</h1>
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                <Card className="glass-card bg-black/40 backdrop-blur-md border-white/10">
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-sm font-medium">Total de Servicios</CardTitle>
+                        <CardTitle className="text-sm font-medium text-slate-300">Total de Servicios</CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <div className="text-2xl font-bold">{dashboardData.servicesCount}</div>
+                        <div className="text-2xl font-bold text-white">{dashboardData.servicesCount}</div>
                     </CardContent>
                 </Card>
-                <Card>
+                <Card className="glass-card bg-black/40 backdrop-blur-md border-white/10">
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-sm font-medium">Total de Tickets</CardTitle>
+                        <CardTitle className="text-sm font-medium text-slate-300">Total de Tickets</CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <div className="text-2xl font-bold">{dashboardData.ticketsCount}</div>
+                        <div className="text-2xl font-bold text-white">{dashboardData.ticketsCount}</div>
                     </CardContent>
                 </Card>
-                <Card>
+                <Card className="glass-card bg-black/40 backdrop-blur-md border-white/10">
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-sm font-medium">Tickets Abiertos</CardTitle>
+                        <CardTitle className="text-sm font-medium text-slate-300">Tickets Abiertos</CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <div className="text-2xl font-bold">{dashboardData.openTicketsCount}</div>
+                        <div className="text-2xl font-bold text-white">{dashboardData.openTicketsCount}</div>
                     </CardContent>
                 </Card>
             </div>
