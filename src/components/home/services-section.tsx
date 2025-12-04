@@ -24,6 +24,7 @@ interface ServicesSectionProps {
 
 export default function ServicesSection({ services, showSearch = true }: ServicesSectionProps) {
   const [searchTerm, setSearchTerm] = useState("");
+  const [showSuggestions, setShowSuggestions] = useState(false);
 
   const filteredServices = services?.filter((service) =>
     service.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -49,15 +50,48 @@ export default function ServicesSection({ services, showSearch = true }: Service
           {/* Search Bar */}
           {showSearch && (
             <div className="max-w-md mx-auto relative">
-              <div className="relative">
+              <div className="relative z-50">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
                 <Input
                   type="text"
                   placeholder="Buscar servicios..."
                   className="pl-10 bg-black/50 backdrop-blur-md border-white/20 text-white placeholder:text-slate-400 focus-visible:ring-amber-500"
                   value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
+                  onChange={(e) => {
+                    setSearchTerm(e.target.value);
+                    setShowSuggestions(true);
+                  }}
+                  onFocus={() => setShowSuggestions(true)}
+                  onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
                 />
+
+                {/* Suggestions Dropdown */}
+                {showSuggestions && searchTerm.length > 0 && (
+                  <div className="absolute top-full left-0 right-0 mt-2 bg-black/80 backdrop-blur-md border border-white/10 rounded-lg shadow-xl overflow-hidden">
+                    {filteredServices && filteredServices.length > 0 ? (
+                      <ul className="py-1">
+                        {filteredServices.slice(0, 5).map((service) => (
+                          <li key={service.id}>
+                            <button
+                              className="w-full text-left px-4 py-2 text-sm text-slate-300 hover:bg-white/10 hover:text-white transition-colors flex items-center gap-2"
+                              onClick={() => {
+                                setSearchTerm(service.title);
+                                setShowSuggestions(false);
+                              }}
+                            >
+                              <Search className="w-3 h-3 text-slate-500" />
+                              {service.title}
+                            </button>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <div className="px-4 py-3 text-sm text-slate-500 text-center">
+                        No se encontraron resultados
+                      </div>
+                    )}
+                  </div>
+                )}
               </div>
             </div>
           )}
