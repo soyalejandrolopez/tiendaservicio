@@ -7,6 +7,7 @@ import MobileBottomNav from "@/components/layout/mobile-bottom-nav";
 import { cn } from "@/lib/utils";
 import BackgroundSlideshow from "@/components/ui/BackgroundSlideshow";
 import ConditionalLayout from "@/components/layout/conditional-layout";
+import WhatsAppButton from "@/components/ui/whatsapp-button";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -49,6 +50,7 @@ export default function RootLayout({
             <main className="flex-grow">
               {children}
             </main>
+            <WhatsAppButton />
           </ConditionalLayout>
           <MobileBottomNav />
         </div>
